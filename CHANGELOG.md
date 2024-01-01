@@ -13,3 +13,11 @@
 
 - Произведена настройка репозитория проекта
 - Установлен и настроен пакет [Jupyter Book](https://jupyterbook.org/)
+
+
+## [0.1.1] - 2024.01.01
+
+### Изменено
+
+- Произведена смена лицензии на [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode.en)
+- Добавлено автоматическое создание файла CNAME для GitHub Pages
