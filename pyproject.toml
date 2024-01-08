@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "0.1.1"
+version = "2024.01.01"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -19,6 +19,7 @@ repository = "http://github.com/bookseer/booktemp"
 documentation = "https://booktemp.bookseer.org/docs.html"
 keywords = ["keywords"]
 packages = [{include = "bookseer", from = "src"}]
+exclude = ["book/*"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Education",
@@ -29,42 +30,50 @@ classifiers = [
     "Topic :: Education"
 ]
 
-exclude = ["book/*"]
-
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bookseer/booktemp/issues"
 
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.10"
 pip = "^23.3.1"
-jupyterlab = "^4.0.0"
-matplotlib = "^3.8.0"
-notebook = "^7.0.0"
-tqdm = "^4.66.1"
+lxml = "4.9.4"
 
+[tool.poetry.group.jupyter.dependencies]
+jupyterlab = "^4.0.0"
+notebook = "^7.0.0"
 
 [tool.poetry.group.dev.dependencies]
-# dev dependencies
 ghp-import = "^2.1.0"
 jupyter-book = "^0.15.1"
-jupytext = "^1.16.0"
-# test dependencies
+poetry-exec-plugin = "^0.3.6"
+poetry-plugin-export = "^1.6.0"
+pyautogui = "^0.9.54"
+pyppeteer = "^1.0.2"
+termtosvg = "^1.1.0"
+
+[tool.poetry.group.test.dependencies]
 bandit = {extras = ["toml"], version = "^1.7.6"}
 black = "^23.12.0"
 isort = "^5.13.1"
 mypy = "^1.7.1"
 nbqa = "^1.7.1"
-poetry-exec-plugin = "^0.3.6"
-poetry-plugin-export = "^1.6.0"
 pre-commit = "^3.6.0"
 pre-commit-hooks = "^4.5.0"
 pylint = "^3.0.3"
 pytest = "^7.4.3"
 pyupgrade = "^3.15.0"
-# test dependencies
-mkdocs = "^1.5.3"
+
+[tool.poetry.group.binder.dependencies]
+ipywidgets = "^8.1.1"
+jupytext = "^1.16.0"
+sphinx-click = "^5.1.0"
+sphinx-inline-tabs = "^2023.4.21"
+sphinx-proof = "^0.1.3"
+sphinx-togglebutton = "^0.3.2"
+sphinxext-rediraffe = "^0.2.7"
+tqdm = "^4.66.1"
 
 
 [tool.poetry.extras]
@@ -84,9 +93,11 @@ pre-commit install;
 export = """
 poetry lock
 echo 'Exports dependencies to requirements.rxt'
-poetry export --format requirements.txt --output requirements.txt --without-hashes --without=dev
+poetry export --format requirements.txt --output requirements.txt --without-hashes --without=dev --without=test
 echo 'Exports developer dependencies to requirements-dev.txt.'
-poetry export --format requirements.txt --output requirements-dev.txt --without-hashes --only=dev
+poetry export --format requirements.txt --output requirements-dev.txt --without-hashes
+echo 'Exports dependencies to ./binder/requirements.rxt'
+poetry export --format requirements.txt --output ./.binder/requirements.txt --without-hashes --only=binder --only=main
 """
 
 # Update this repo
@@ -107,10 +118,15 @@ notebook = "python -m jupyter notebook --allow-root --NotebookApp.token='' --Not
 # Deactivate virtual environment.
 stop = "deactivate; exit"
 
+# Build book
+build = """
+jupyter-book ./book/ build --all --builder html
+"""
+
 # Build and publish book
 publish = """
-jupyter-book build --all --builder html book/
-ghp-import --no-jekyll --push --force --cname=booktemp.bookseer.org book/_build/html
+jupyter-book build ./book/ --all --builder html
+ghp-import ./book/_build/html --no-jekyll --push --force --cname=booktemp.bookseer.org
 """
 
 

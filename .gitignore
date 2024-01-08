@@ -484,3 +484,6 @@ docs/.lektor/
 
 # Jupyter Book
 book/_build/
+
+# Jupyter Notebook
+*.ipynb

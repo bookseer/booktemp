@@ -355,6 +355,7 @@ repos:
     language: system
     entry: python -m nbqa pylint
     args: [--rcfile=pyproject.toml,
+           --disable=C0103, # Skip the hyphen in the file name (invalid-name)
            --disable=C0111, # Missing module docstring (missing-module-docstring)
            --disable=C0413, # Import should be placed at the top of the module (wrong-import-position)
     ]

@@ -4,149 +4,282 @@
 title: bookname
 author: Красников Александр
 copyright: 2023–2024
-logo: logo.png
+logo: _static/images/logo-wide.svg
+email: writer@bookseer.org
+description: >- # this means to ignore newlines until "baseurl:"
+  bookname
+
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
-exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+exclude_patterns: ["**.ipynb_checkpoints"]
+
 # Auto-exclude files not in the toc
 only_build_toc_files: false
 
 
 #======================================================================================================================
-# Execution settings
+# Information about where the book exists on the web
+# See https://jupyterbook.org/en/stable/interactive/launchbuttons.html#common-launch-button-configuration
+#======================================================================================================================
+repository:
+
+  # Online location of your book
+  url: https://github.com/bookseer/booktemp
+
+  # Optional path to your book, relative to the repository root
+  path_to_book: book
+
+  # Which branch of the repository should be used when creating links (optional)
+  branch: main
+
+
+#======================================================================================================================
+# Launch button settings
+# See https://jupyterbook.org/en/stable/interactive/launchbuttons.html
+#======================================================================================================================
+launch_buttons:
+
+  # Add a thebe button to pages (requires the repository to run on Binder)
+  thebe: true
+
+  # The interface interactive links will activate ["classic", "jupyterlab"]
+  notebook_interface: "classic"
+
+  # The URL of the BinderHub (e.g., https://mybinder.org)
+  binderhub_url: "https://mybinder.org"
+
+  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
+  # On your JupyterHub server, you need two dependencies installed:
+  #   1. To clone the notebook with the launch link, the server needs nbgitpuller.
+  #   2. To open myst-markdown as notebooks, the server needs jupytext>=0.16.
+  # You can add the following line to your DockerFile:
+  # RUN pip install jupytext nbgitpuller
+  jupyterhub_url: ""
+
+  # The URL of Google Colab (https://colab.research.google.com)
+  # Google Colab links will only work for pages that have the .ipynb extension.
+  colab_url: ""
+
+
+#======================================================================================================================
+# Execute and cache settings
 # See https://jupyterbook.org/content/execute.html
 #======================================================================================================================
 execute:
+
   # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
-  execute_notebooks: force
+  execute_notebooks: auto
+
   # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
-  cache: ""
+  cache: "_build/.jupyter_cache/"
+
   # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
-  exclude_patterns: []
+  # exclude_patterns: []
+
   # The maximum time (in seconds) each notebook cell is allowed to run.
-  timeout: 30
-  # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
+  timeout: 120
+
+  # If `true`, then a temporary directory will be created and used as the command working directory (cwd),
   # otherwise the notebook's parent directory will be the cwd.
   run_in_temp: false
-   # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+
+  # If `false`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
   allow_errors: false
+
   # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
-  stderr_output: show
+  stderr_output: "show"
 
 
 #======================================================================================================================
-# Parse and render settings
+# Optional MyST Syntaxes
 # See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
 #======================================================================================================================
 parse:
-  myst_enable_extensions:  # default extensions to enable in the myst parser.
-    # - amsmath
+
+  # Default extensions to enable in the myst parser.
+  myst_enable_extensions:
+    - amsmath
     - colon_fence
-    # - deflist
+    - deflist
     - dollarmath
-    # - html_admonition
-    # - html_image
+    - html_admonition
+    - html_image
     - linkify
-    # - replacements
-    # - smartquotes
+    - replacements
+    - smartquotes
     - substitution
     - tasklist
+
+  # https://myst-parser.readthedocs.io/en/v0.13.4/using/syntax-optional.html#substitutions-with-jinja2
+  myst_substitutions:
+    licence: CC BY-NC 4.0
+
   # URI schemes that will be recognised as external URLs in Markdown links
-  myst_url_schemes: [mailto, http, https]
+  myst_url_schemes: ["mailto", "http", "https"]
+
   # Allow display math ($$) within an inline context
   myst_dmath_double_inline: true
 
 
 #======================================================================================================================
 # HTML-specific settings
-#  See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 #======================================================================================================================
 html:
+
+  # A banner announcement at the top of the site.
+  announcement: "Сайт находится в разработке"
+
+  # Adding extra HTML to the footer
+  extra_footer: |
+    Copyright &copy; 2023–2024,
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode.en"
+      target="_blank" rel="nofollow noindex noopener">CC BY-NC 4.0
+    </a>
+    <img src="../_static/images/cc-icons.svg#cc-logo" style="width:12px">
+    <img src="../_static/images/cc-icons.svg#cc-by" style="width:12px">
+    <img src="../_static/images/cc-icons.svg#cc-nc" style="width:12px">
+
+  # Add extra HTML to the left navbar
+  extra_navbar: <div>YOUR HTML</div>
+
+  html_extra_path:
+    - _static/images/
+
+  # The base URL where your book will be hosted.
+  # Used for creating image previews and social links.
+  baseurl: "https://booktemp.bookseer.org/"
+
   # A path to a favicon image
-  favicon: ""
-  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository:
-  # must be filled in
+  favicon: "_static/images/favicon.ico"
+
+  # Whether to add an "edit this page" button to pages.
+  # If `true`, repository information in `repository`must be filled in
   use_edit_page_button: true
+
   # Whether to add a link to your repository button
   use_repository_button: true
+
   # Whether to add an "open an issue" button
   use_issues_button: true
+
   # Continuous numbering across parts/chapters
   use_multitoc_numbering: true
-  # Will be displayed underneath the footer
-  extra_footer: ""
+
+  # Whether to include your home page in the left Navigation Bar
+  home_page_in_navbar: false
+
   # A GA id that can be used to track book views.
   google_analytics_id: ""
-  # Whether to include your home page in the left Navigation Bar
-  home_page_in_navbar: true
-  # The base URL where your book will be hosted. Used for creating image previews and social links.
-  baseurl: "https://booktemp.bookseer.org/"
-  analytics:
 
 
 #======================================================================================================================
 # Comments settings
+# See https://jupyterbook.org/en/stable/interactive/comments.html?highlight=Comments#
 #======================================================================================================================
   comments:
     hypothesis: false
     utterances: false
-  # A banner announcement at the top of the site.
-  announcement:  "Сайт находится в разработке"
+
 
 
 #======================================================================================================================
 # LaTeX-specific settings
-#======================================================================================================================
 # Define the name of the latex output file for PDF builds
+# See https://jupyterbook.org/en/stable/advanced/pdf.html
+#======================================================================================================================
 latex:
+
   # latex_engine  one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
   latex_engine: xelatex
-  # use sphinx-jupyterbook-latex for pdf builds as default
+
+  # Use sphinx-jupyterbook-latex for pdf builds as default
   use_jupyterbook_latex: true
+
   latex_documents:
+    # Define the name of the latex output file for PDF builds
     targetname: book.tex
 
+
+#======================================================================================================================
+# BibLaTex-specific settings
+# See https://jupyterbook.org/en/stable/tutorials/references.html?highlight=bibtex#
+#======================================================================================================================
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
   - references.bib
 
 
 #======================================================================================================================
-# Launch button settings
-#======================================================================================================================
-launch_buttons:
-  # The interface interactive links will activate ["classic", "jupyterlab"]
-  notebook_interface: classic
-  # The URL of the BinderHub (e.g., https://mybinder.org)
-  binderhub_url: "https://mybinder.org"
-  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
-  jupyterhub_url: ""
-   # Add a thebe button to pages (requires the repository to run on Binder)
-  thebe: true
-  # The URL of Google Colab (https://colab.research.google.com)
-  colab_url: ""
-
-
-#======================================================================================================================
-# Information about where the book exists on the web
-#======================================================================================================================
-repository:
-  # Online location of your book
-  url: https://github.com/bookseer/booktemp
-  # Optional path to your book, relative to the repository root
-  path_to_book: ./book
-  # Which branch of the repository should be used when creating links (optional)
-  branch: main
-
-
-#======================================================================================================================
-# Advanced and power-user settings
+# Sphinx Advanced and power-user settings
 #======================================================================================================================
 sphinx:
+
   # A list of extra extensions to load by Sphinx (added to those already used by JB).
   extra_extensions:
+    - sphinx_inline_tabs
+    - sphinx_proof
+    - sphinx_togglebutton
+    - sphinxext.rediraffe
+
   # A list of local extensions to load by sphinx specified by "name: path" items
   local_extensions:
+
   # A boolean indicating whether to overwrite the Sphinx config (true) or recursively update (false)
   recursive_update: false
-  # key-value pairs to directly over-ride the Sphinx configuration
-  config:
+
+  config:  # key-value pairs to directly over-ride the Sphinx configuration
+
+    # html
+    #
+    language: "ru"
+    html_show_copyright: false
+
+    # Latex
+    # https://jupyterbook.org/en/stable/advanced/pdf.html?highlight=latex_engine#book-style-pdf
+    bibtex_reference_style: author_year  # or label, super, \supercite
+    latex_toplevel_sectioning: "part"
+
+    # Package provides LaTeX support for the included “Font Awesome 5 Free” icon set
+    # https://ctan.org/pkg/fontawesome5
+    # sd_fontawesome_latex: True # FIXME: does not work
+
+    # suppress_warnings: ["mystnb.unknown_mime_type", "myst.domains", "mystnb.mime_priority"]
+
+    # https://sphinx-copybutton.readthedocs.io/en/latest/use.html
+    copybutton_exclude: ".linenos, .gp, .go"
+    nb_execution_show_tb: True
+    nb_execution_timeout: 120
+
+
+    # Custom notebook formats and Jupytext
+    # https://jupyterbook.org/en/stable/file-types/jupytext.html
+    nb_custom_formats:
+      .Rmd:
+        - jupytext.reads
+        - fmt: Rmd
+
+    latex_elements:
+      preamble: |
+        \usepackage{fontawesome5}
+        \newcommand\N{\mathbb{N}}
+        \newcommand\floor[1]{\lfloor#1\rfloor}
+        \newcommand{\bmat}{\left[\begin{array}}
+        \newcommand{\emat}{\end{array}\right]}
+
+    # TODO: #917 this path will be the default in sphinx v4
+    # mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    # However, it is incompatible with the mathjax config below for macros
+    mathjax3_config:
+      tex:
+        macros:
+          "N": "\\mathbb{N}"
+          "floor": ["\\lfloor#1\\rfloor", 1]
+          "bmat": ["\\left[\\begin{array}"]
+          "emat": ["\\end{array}\\right]"]
+
+    # sphinxext.rediraffe
+    # Sphinx Extension to redirect files
+    # https://github.com/wpilibsuite/sphinxext-rediraffe
+    #rediraffe_branch: 'main'
+    #rediraffe_redirects:
+      #from: to
