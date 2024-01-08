@@ -3,5 +3,10 @@
 
 format: jb-book
 root: index
-chapters:
-  - file: chapter01
+parts:
+- caption: Общая информация
+  chapters:
+  - file: info/index
+    sections:
+    - file: info/typography
+
