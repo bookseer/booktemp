@@ -219,7 +219,7 @@ sphinx:
     - sphinx_inline_tabs
     - sphinx_proof
     - sphinx_togglebutton
-    - sphinxext.rediraffe
+    #- sphinxext.rediraffe
 
   # A list of local extensions to load by sphinx specified by "name: path" items
   local_extensions:
