@@ -1,14 +1,14 @@
 #======================================================================================================================
 # Poetry: Python dependency management and packaging made easy
+# https://python-poetry.org/
 #======================================================================================================================
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2024.09.29"
+version = "2024.09.30"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -20,119 +20,141 @@ documentation = "https://booktemp.bookseer.org/docs.html"
 keywords = ["keywords"]
 packages = [{include = "bookseer", from = "src"}]
 exclude = ["book/*"]
-classifiers = [
+classifiers = [ # https://pypi.org/classifiers/
     "Development Status :: 3 - Alpha",
+    "Framework :: Sphinx",
     "Intended Audience :: Education",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: CC BY 4.0 License",
+    "License :: Freeware", #CC BY 4.0 License
+    "Natural Language :: Russian",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.12",
     "Topic :: Education"
-    ]
-
+]
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bookseer/booktemp/issues"
 
 
+#======================================================================================================================
+# Project's dependencies
+# https://pypi.org/
+#======================================================================================================================
 [tool.poetry.dependencies]
 python = "^3.12"
 pip = "^24.0"
-lxml = "~5.3"
 
-[tool.poetry.group.jupyter.dependencies]
-jupyterlab = "~4.2"
-notebook = "~7.2"
+asciinema = "~2.4" # Terminal session recorder
+asciinema-automation = "~0.2" # CLI utility to automate asciinema
+asciinema-scene = "~0.8" # Toolbox to edit asciinema screencasts (sciine)
+ipywidgets = "~8.1" # Jupyter interactive widgets
+jupyterlab = "~4.2" # JupyterLab computational environment
+jupytext = "~1.16" # Jupyter notebooks as Markdown documents, Julia, Python or R scripts
+lxml = "~5.3" # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
+notebook = "~7.2" # A web-based notebook environment for interactive computing
+sphinxcontrib-asciinema = "~0.4" # Embed asciinema casts in your Sphinx docs
+sphinx-click = "~6.0" # Sphinx extension that automatically documents click applications
+sphinx-inline-tabs = "~2023.4" # Add inline tabbed content to your Sphinx documentation
+sphinx-proof = "~0.2" # A Sphinx extension for producing proofs, theorems, axioms, etc.
+sphinx-togglebutton = "~0.3" # Toggle page content and collapse admonitions in Sphinx
+sphinxext-rediraffe = "~0.2" # Sphinx Extension that redirects non-existent pages to working pages
+tqdm = "~4.66" # Fast, Extensible Progress Meter
 
 [tool.poetry.group.dev.dependencies]
-ghp-import = "~2.1"
-jupyter-book = "~1.0"
-poetry-exec-plugin = "~0.3"
-poetry-plugin-export = "~1.8"
-pyautogui = "~0.9"
-pyppeteer = "~2.0"
-termtosvg = "~1.1"
+ghp-import = "~2.1" # Copy your docs directly to the gh-pages branch
+jupyter-book = "~1.0" # Build a book with Jupyter Notebooks and Sphinx
+poetry-exec-plugin = "~0.3" # A plugin for poetry that allows you to execute scripts defined in your pyproject.toml
+poetry-plugin-export = "~1.8" # Poetry plugin to export the dependencies to various formats
+pyautogui = "~0.9" # Control the mouse and keyboard, and other GUI automation tasks
+pyppeteer = "~2.0" # Headless chrome/chromium automation library (unofficial port of puppeteer)
+termtosvg = "~1.1" # Record terminal sessions as SVG animations
 
 [tool.poetry.group.test.dependencies]
-bandit = {extras = ["toml"], version = "~1.7"}
-black = "~24.8"
-isort = "~5.13"
-mypy = "~1.11"
-nbqa = "~1.9"
-pre-commit = "~3.8"
-pre-commit-hooks = "~4.6"
-pylint = "~3.3"
-pytest = "~8.3"
-pyupgrade = "~3.17"
-
-[tool.poetry.group.binder.dependencies]
-asciinema = "~2.4"
-asciinema-automation = "~0.2"
-asciinema-scene = "~0.8"
-ipywidgets = "~8.1"
-jupytext = "~1.16"
-sphinxcontrib-asciinema = "~0.4"
-sphinx-click = "~6.0"
-sphinx-inline-tabs = "~2023.4"
-sphinx-proof = "~0.2"
-sphinx-togglebutton = "~0.3"
-sphinxext-rediraffe = "~0.2"
-tqdm = "~4.66"
+bandit = {extras = ["toml"], version = "~1.7"} # Security oriented static analyser for python code
+black = "~24.8" # The uncompromising code formatter
+isort = "~5.13" # A Python utility / library to sort Python imports
+mypy = "~1.11" # Optional static typing for Python
+nbqa = "~1.9" # Run any standard Python code quality tool on a Jupyter Notebook
+pre-commit = "~3.8" # A framework for managing and maintaining multi-language pre-commit hooks
+pre-commit-hooks = "~4.6" # Some out-of-the-box hooks for pre-commit
+pylint = "~3.3" # Python code static checker
+pytest = "~8.3" # Simple powerful testing with Python
+pyupgrade = "~3.17" # A tool to automatically upgrade syntax for newer versions
 
 
+#======================================================================================================================
+# Optional dependencies, which enhance a package, but are not required and clusters of optional dependencies
+# https://python-poetry.org/docs/pyproject#extras
+#======================================================================================================================
 [tool.poetry.extras]
 
 
+#======================================================================================================================
+# Scripts or executables that will be installed when installing the package
+# https://python-poetry.org/docs/pyproject#scripts
+#======================================================================================================================
 [tool.poetry.scripts]
 
 
+#======================================================================================================================
+# A plugin for poetry that allows you to execute scripts, just like you can in npm or pipenv
+# https://pypi.org/project/poetry-exec-plugin/
+#======================================================================================================================
 [tool.poetry-exec-plugin.commands]
-# Init this repo
 install = """
-poetry config warnings.export false;
-poetry install --no-root;
-pre-commit install;
+echo 'Init this repo'
+poetry config warnings.export false
+poetry install --no-root
+pre-commit install
 """
 
-# Export all dependencies to requirements.rxt and requirements-dev.rxt.
-export = """
-poetry lock
-echo 'Exports dependencies to requirements.rxt'
-poetry export --format requirements.txt --output requirements.txt --without-hashes --without=dev --without=test
-echo 'Exports developer dependencies to requirements-dev.txt.'
-poetry export --format requirements.txt --output requirements-dev.txt --without-hashes
-echo 'Exports dependencies to ./binder/requirements.rxt'
-poetry export --format requirements.txt --output ./.binder/requirements.txt --without-hashes --only=binder --only=main
-"""
-
-# Update this repo
 update = """
-poetry update --version;
-poetry update;
-poetry exec export;
-pre-commit autoupdate --freeze;
-poetry show --top-level --outdated;
+echo 'Update this repo'
+poetry lock
+poetry update --version
+poetry update
+poetry exec export
+pre-commit autoupdate --freeze
+poetry show --top-level --outdated
 """
 
-# Run pre-commit
-precommit = "pre-commit run --all-files"
+export = """
+echo 'Export all dependencies to requirements files'
+poetry export --format requirements.txt --output requirements.txt --without-hashes
+poetry export --format requirements.txt --output ./.binder/requirements.txt --without-hashes --without=dev --without=test
+"""
 
-# Start Jupyter  Notebook without token.
-notebook = "python -m jupyter notebook --allow-root --NotebookApp.token='' --NotebookApp.password=''"
+precommit = """
+echo 'Run pre-commit'
+pre-commit run --all-files
+"""
 
-# Deactivate virtual environment.
-stop = "deactivate; exit"
+notebook = """
+echo 'Start Jupyter  Notebook without token'
+python -m jupyter notebook --allow-root --NotebookApp.token='' --NotebookApp.password=''
+"""
 
-# Build book
+nblab = """
+echo 'Start Jupyter  Lab without token'
+python -m jupyter lab --allow-root --NotebookApp.token='' --NotebookApp.password=''
+"""
+
 build = """
+echo 'Build book'
 jupyter-book build --all --builder html ./book/
 """
 
-# Build and publish book
 publish = """
+echo 'Build and publish book'
 poetry exec build
 ghp-import ./book/_build/html --no-jekyll --push --force --cname=booktemp.bookseer.org
 """
+
+stop = """
+echo 'Deactivate virtual environment'
+deactivate
+exit
+""""
 
 
 #======================================================================================================================
