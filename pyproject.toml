@@ -41,7 +41,7 @@ classifiers = [ # https://pypi.org/classifiers/
 # https://pypi.org/
 #======================================================================================================================
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.11"
 pip = "^24.0"
 
 asciinema = "~2.4" # Terminal session recorder
