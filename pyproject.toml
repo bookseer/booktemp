@@ -101,6 +101,7 @@ pyupgrade = "~3.17" # A tool to automatically upgrade syntax for newer versions
 # https://pypi.org/project/poetry-exec-plugin/
 #======================================================================================================================
 [tool.poetry-exec-plugin.commands]
+
 install = """
 echo 'Init this repo'
 poetry config warnings.export false
@@ -187,7 +188,7 @@ no_shell = [
     "os.spawnvp",
     "os.spawnvpe",
     "os.startfile",
-    ]
+]
 
 shell = [
     "os.system",
@@ -202,14 +203,14 @@ shell = [
     "popen2.Popen4",
     "commands.getoutput",
     "commands.getstatusoutput",
-    ]
+]
 
 subprocess = [
     "subprocess.Popen",
     "subprocess.call",
     "subprocess.check_call",
     "subprocess.check_output",
-    ]
+]
 
 
 #======================================================================================================================
