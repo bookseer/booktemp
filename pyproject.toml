@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2024.09.30"
+version = "2024.10.01"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -49,6 +49,7 @@ asciinema-automation = "~0.2" # CLI utility to automate asciinema
 asciinema-scene = "~0.8" # Toolbox to edit asciinema screencasts (sciine)
 ipywidgets = "~8.1" # Jupyter interactive widgets
 jupyterlab = "~4.2" # JupyterLab computational environment
+jupyterlab-rise = "^0.42.0" # RISE: "Live" Reveal.js JupyterLab Slideshow extension
 jupytext = "~1.16" # Jupyter notebooks as Markdown documents, Julia, Python or R scripts
 lxml = "~5.3" # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
 notebook = "~7.2" # A web-based notebook environment for interactive computing
