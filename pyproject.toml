@@ -60,27 +60,33 @@ sphinx-proof = "~0.2" # A Sphinx extension for producing proofs, theorems, axiom
 sphinx-togglebutton = "~0.3" # Toggle page content and collapse admonitions in Sphinx
 sphinxext-rediraffe = "~0.2" # Sphinx Extension that redirects non-existent pages to working pages
 tqdm = "~4.66" # Fast, Extensible Progress Meter
+watermark = "^2.5.0" # IPython magic function to print date/time stamps and various system information
 
 [tool.poetry.group.dev.dependencies]
 ghp-import = "~2.1" # Copy your docs directly to the gh-pages branch
 jupyter-book = "~1.0" # Build a book with Jupyter Notebooks and Sphinx
+line-profiler = "~4.1.3" # Line-by-line profiler
 poetry-exec-plugin = "~0.3" # A plugin for poetry that allows you to execute scripts defined in your pyproject.toml
 poetry-plugin-export = "~1.8" # Poetry plugin to export the dependencies to various formats
 pyautogui = "~0.9" # Control the mouse and keyboard, and other GUI automation tasks
 pyppeteer = "~2.0" # Headless chrome/chromium automation library (unofficial port of puppeteer)
+spyder = "^6.0.1" # The Python IDE that scientists and data analysts deserve
+spyder-line-profiler = "^0.4.0" # A plugin to run the Python line profiler
+spyder-notebook = "^0.6.1" # A plugin that allows you to open, edit and interact with Jupyter Notebooks inside Spyder
+spyder-terminal = "^1.2.2" # A plugin that allows you to have integrated system terminals inside Spyder
 termtosvg = "~1.1" # Record terminal sessions as SVG animations
 
 [tool.poetry.group.test.dependencies]
 bandit = {extras = ["toml"], version = "~1.7"} # Security oriented static analyser for python code
-black = "~24.8" # The uncompromising code formatter
+black = "~24.10" # The uncompromising code formatter
 isort = "~5.13" # A Python utility / library to sort Python imports
-mypy = "~1.11" # Optional static typing for Python
+mypy = "~1.12" # Optional static typing for Python
 nbqa = "~1.9" # Run any standard Python code quality tool on a Jupyter Notebook
-pre-commit = "~3.8" # A framework for managing and maintaining multi-language pre-commit hooks
-pre-commit-hooks = "~4.6" # Some out-of-the-box hooks for pre-commit
+pre-commit = "~4.0" # A framework for managing and maintaining multi-language pre-commit hooks
+pre-commit-hooks = "~5.0" # Some out-of-the-box hooks for pre-commit
 pylint = "~3.3" # Python code static checker
 pytest = "~8.3" # Simple powerful testing with Python
-pyupgrade = "~3.17" # A tool to automatically upgrade syntax for newer versions
+pyupgrade = "~3.18" # A tool to automatically upgrade syntax for newer versions
 
 
 #======================================================================================================================
@@ -110,6 +116,15 @@ poetry install --no-root
 pre-commit install
 """
 
+clear = """
+echo 'Clear poetry virtual environment'
+rm -rf `poetry env info -p`
+rm -rf ./poetry.lock
+rm -rf ./.mypy_cache
+rm -rf ./.pytest_cache
+rm -rf ./.editors_conf/jupyter/lab/workspaces
+"""
+
 update = """
 echo 'Update this repo'
 poetry lock
@@ -122,8 +137,9 @@ poetry show --top-level --outdated
 
 export = """
 echo 'Export all dependencies to requirements files'
-poetry export --format requirements.txt --output requirements.txt --without-hashes
-poetry export --format requirements.txt --output ./.binder/requirements.txt --without-hashes --without=dev --without=test
+poetry export --format requirements.txt --output ./requirements.txt --without-hashes
+poetry export --format requirements.txt --output ./requirements_colab.txt --without-hashes --without dev --without test
+poetry export --format requirements.txt --output ./.binder/requirements.txt --without-hashes --without dev --without=test
 """
 
 precommit = """
@@ -131,14 +147,16 @@ echo 'Run pre-commit'
 pre-commit run --all-files
 """
 
-notebook = """
-echo 'Start Jupyter  Notebook without token'
-python -m jupyter notebook --allow-root --NotebookApp.token='' --NotebookApp.password=''
+jupyter = """
+echo 'Start Jupyter Lab without token'
+export JUPYTERLAB_SETTINGS_DIR=./.jupyterlab_config/user-settings
+export JUPYTERLAB_WORKSPACES_DIR=./.jupyterlab_config/workspaces
+python -m jupyter lab --allow-root --NotebookApp.token='' --NotebookApp.password=''
 """
 
-nblab = """
-echo 'Start Jupyter  Lab without token'
-python -m jupyter lab --allow-root --NotebookApp.token='' --NotebookApp.password=''
+spyder = """
+Start Spyder
+spyder --workdir=./ --window-title booktemp --project ./ --conf-dir ./.spyder_config
 """
 
 build = """

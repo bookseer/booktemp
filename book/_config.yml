@@ -57,7 +57,7 @@ launch_buttons:
 
   # The URL of Google Colab (https://colab.research.google.com)
   # Google Colab links will only work for pages that have the .ipynb extension.
-  colab_url: ""
+  colab_url: "https://colab.research.google.com"
 
 
 #======================================================================================================================
