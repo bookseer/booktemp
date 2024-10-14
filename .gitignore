@@ -484,6 +484,7 @@ book/_build/
 
 # Jupyter Notebook
 *.ipynb
+.editors_conf/jupyter/lab/workspaces/
 
 # Custom editors settings
 .jupyterlab_config/
