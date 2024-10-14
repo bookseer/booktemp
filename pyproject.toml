@@ -120,9 +120,6 @@ clear = """
 echo 'Clear poetry virtual environment'
 rm -rf `poetry env info -p`
 rm -rf ./poetry.lock
-rm -rf ./.mypy_cache
-rm -rf ./.pytest_cache
-rm -rf ./.editors_conf/jupyter/lab/workspaces
 """
 
 update = """
