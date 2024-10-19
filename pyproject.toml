@@ -40,10 +40,11 @@ classifiers = [ # https://pypi.org/classifiers/
 # Project's dependencies
 # https://pypi.org/
 #======================================================================================================================
-[tool.poetry.dependencies] # Dependencies required for all books
+[tool.poetry.dependencies] # Dependencies required for this books
 python = "^3.10"
 pip = "^24.0"
 
+[tool.poetry.group.jupyter.dependencies] # Dependencies required for JupyterBook
 ipywidgets = "~8.1" # Jupyter interactive widgets
 jupyterlab = "~4.2" # JupyterLab computational environment
 jupyterlab-rise = "~0.42" # RISE: "Live" Reveal.js JupyterLab Slideshow extension
@@ -56,13 +57,6 @@ sphinx-proof = "~0.2" # A Sphinx extension for producing proofs, theorems, axiom
 sphinx-togglebutton = "~0.3" # Toggle page content and collapse admonitions in Sphinx
 sphinxext-rediraffe = "~0.2" # Sphinx Extension that redirects non-existent pages to working pages
 watermark = "~2.5" # IPython magic function to print date/time stamps and various system information
-
-[tool.poetry.group.book.dependencies] # Dependencies required for this book
-asciinema = "~2.4" # Terminal session recorder
-asciinema-automation = "~0.2" # CLI utility to automate asciinema
-asciinema-scene = "~0.8" # Toolbox to edit asciinema screencasts (sciine)
-sphinxcontrib-asciinema = "~0.4" # Embed asciinema casts in your Sphinx docs
-tqdm = "~4.66" # Fast, Extensible Progress Meter
 
 [tool.poetry.group.dev.dependencies]
 ghp-import = "~2.1" # Copy your docs directly to the gh-pages branch
