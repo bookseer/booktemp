@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2024.10.15"
+version = "2024.10.19"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -25,7 +25,7 @@ classifiers = [ # https://pypi.org/classifiers/
     "Framework :: Sphinx",
     "Intended Audience :: Education",
     "Intended Audience :: Developers",
-    "License :: Freeware", #CC BY 4.0 License
+    "License :: Freeware", #CC BY  4.0 License
     "Natural Language :: Russian",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.12",
@@ -40,27 +40,29 @@ classifiers = [ # https://pypi.org/classifiers/
 # Project's dependencies
 # https://pypi.org/
 #======================================================================================================================
-[tool.poetry.dependencies]
+[tool.poetry.dependencies] # Dependencies required for all books
 python = "^3.10"
 pip = "^24.0"
 
-asciinema = "~2.4" # Terminal session recorder
-asciinema-automation = "~0.2" # CLI utility to automate asciinema
-asciinema-scene = "~0.8" # Toolbox to edit asciinema screencasts (sciine)
 ipywidgets = "~8.1" # Jupyter interactive widgets
 jupyterlab = "~4.2" # JupyterLab computational environment
-jupyterlab-rise = "^0.42.0" # RISE: "Live" Reveal.js JupyterLab Slideshow extension
+jupyterlab-rise = "~0.42" # RISE: "Live" Reveal.js JupyterLab Slideshow extension
 jupytext = "~1.16" # Jupyter notebooks as Markdown documents, Julia, Python or R scripts
 lxml = "~5.3" # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
 notebook = "~7.2" # A web-based notebook environment for interactive computing
-sphinxcontrib-asciinema = "~0.4" # Embed asciinema casts in your Sphinx docs
 sphinx-click = "~6.0" # Sphinx extension that automatically documents click applications
 sphinx-inline-tabs = "~2023.4" # Add inline tabbed content to your Sphinx documentation
 sphinx-proof = "~0.2" # A Sphinx extension for producing proofs, theorems, axioms, etc.
 sphinx-togglebutton = "~0.3" # Toggle page content and collapse admonitions in Sphinx
 sphinxext-rediraffe = "~0.2" # Sphinx Extension that redirects non-existent pages to working pages
+watermark = "~2.5" # IPython magic function to print date/time stamps and various system information
+
+[tool.poetry.group.book.dependencies] # Dependencies required for this book
+asciinema = "~2.4" # Terminal session recorder
+asciinema-automation = "~0.2" # CLI utility to automate asciinema
+asciinema-scene = "~0.8" # Toolbox to edit asciinema screencasts (sciine)
+sphinxcontrib-asciinema = "~0.4" # Embed asciinema casts in your Sphinx docs
 tqdm = "~4.66" # Fast, Extensible Progress Meter
-watermark = "^2.5.0" # IPython magic function to print date/time stamps and various system information
 
 [tool.poetry.group.dev.dependencies]
 ghp-import = "~2.1" # Copy your docs directly to the gh-pages branch
@@ -70,10 +72,10 @@ poetry-exec-plugin = "~0.3" # A plugin for poetry that allows you to execute scr
 poetry-plugin-export = "~1.8" # Poetry plugin to export the dependencies to various formats
 pyautogui = "~0.9" # Control the mouse and keyboard, and other GUI automation tasks
 pyppeteer = "~2.0" # Headless chrome/chromium automation library (unofficial port of puppeteer)
-spyder = "^6.0.1" # The Python IDE that scientists and data analysts deserve
-spyder-line-profiler = "^0.4.0" # A plugin to run the Python line profiler
-spyder-notebook = "^0.6.1" # A plugin that allows you to open, edit and interact with Jupyter Notebooks inside Spyder
-spyder-terminal = "^1.2.2" # A plugin that allows you to have integrated system terminals inside Spyder
+spyder = "~6.0" # The Python IDE that scientists and data analysts deserve
+spyder-line-profiler = "~0.4" # A plugin to run the Python line profiler
+spyder-notebook = "~0.6" # A plugin that allows you to open, edit and interact with Jupyter Notebooks inside Spyder
+spyder-terminal = "~1.2" # A plugin that allows you to have integrated system terminals inside Spyder
 termtosvg = "~1.1" # Record terminal sessions as SVG animations
 
 [tool.poetry.group.test.dependencies]
@@ -118,7 +120,7 @@ pre-commit install
 
 clear = """
 echo 'Clear poetry virtual environment'
-rm -rf `poetry env info -p`
+rm -rf $(poetry env info --path)
 rm -rf ./poetry.lock
 """
 

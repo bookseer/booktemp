@@ -212,8 +212,7 @@ repos:
     description: "https://github.com/pre-commit/pre-commit-hooks"
     language: system
     entry: requirements-txt-fixer
-    files: ^(requirements).*(.txt)$
-    #^requirements.*\.txt$
+    files: .*(requirements).*(.txt)$
     require_serial: true
     verbose: true
 
