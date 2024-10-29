@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2024.10.19"
+version = "2024.10.29"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -42,7 +42,7 @@ classifiers = [ # https://pypi.org/classifiers/
 #======================================================================================================================
 [tool.poetry.dependencies] # Dependencies required for this books
 python = "^3.10"
-pip = "^24.0"
+pip = "~24.3" # The PyPA recommended tool for installing Python packages
 
 [tool.poetry.group.jupyter.dependencies] # Dependencies required for JupyterBook
 ipywidgets = "~8.1" # Jupyter interactive widgets
@@ -76,13 +76,13 @@ termtosvg = "~1.1" # Record terminal sessions as SVG animations
 bandit = {extras = ["toml"], version = "~1.7"} # Security oriented static analyser for python code
 black = "~24.10" # The uncompromising code formatter
 isort = "~5.13" # A Python utility / library to sort Python imports
-mypy = "~1.12" # Optional static typing for Python
+mypy = "~1.13" # Optional static typing for Python
 nbqa = "~1.9" # Run any standard Python code quality tool on a Jupyter Notebook
 pre-commit = "~4.0" # A framework for managing and maintaining multi-language pre-commit hooks
 pre-commit-hooks = "~5.0" # Some out-of-the-box hooks for pre-commit
 pylint = "~3.3" # Python code static checker
 pytest = "~8.3" # Simple powerful testing with Python
-pyupgrade = "~3.18" # A tool to automatically upgrade syntax for newer versions
+pyupgrade = "~3.19" # A tool to automatically upgrade syntax for newer versions
 
 
 #======================================================================================================================
