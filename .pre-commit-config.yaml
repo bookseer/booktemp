@@ -294,7 +294,7 @@ repos:
     require_serial: true
 
   - id: black
-    name: "Python code formatter (bandit)"
+    name: "Python code formatter (black)"
     description: "https://github.com/psf/black"
     language: system
     entry: python -m black
@@ -303,11 +303,11 @@ repos:
     require_serial: true
 
   - id: black-nbqa
-    name: "Python code formatter (bandit + nbqa)"
+    name: "Python code formatter (black + nbqa)"
     description: "https://github.com/psf/black
                   https://github.com/nbQA-dev/nbQA"
     language: system
-    entry: python -m nbqa black --config pyproject.toml
+    entry: python -m nbqa black
     args: [--config=pyproject.toml]
     types_or: [jupyter, markdown]
     require_serial: true
