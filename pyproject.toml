@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2024.10.29"
+version = "2024.10.19"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -42,7 +42,7 @@ classifiers = [ # https://pypi.org/classifiers/
 #======================================================================================================================
 [tool.poetry.dependencies] # Dependencies required for this books
 python = "^3.10"
-pip = "~24.3" # The PyPA recommended tool for installing Python packages
+pip = "^24.0"
 
 [tool.poetry.group.jupyter.dependencies] # Dependencies required for JupyterBook
 ipywidgets = "~8.1" # Jupyter interactive widgets
