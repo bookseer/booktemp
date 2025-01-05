@@ -47,7 +47,7 @@
 
 ---
 
-Copyright (c) 2023–2024, Александр Красников.
+Copyright (c) 2023–2025, Александр Красников.
 
 [**CC BY-NC 4.0**](./LICENSE.txt)
 <img src="./book/_static/img/cc-icons.svg#cc-logo" style="width:12px">
