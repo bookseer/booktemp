@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2024.10.29"
+version = "2025.01.05"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -41,16 +41,16 @@ classifiers = [ # https://pypi.org/classifiers/
 # https://pypi.org/
 #======================================================================================================================
 [tool.poetry.dependencies] # Dependencies required for this books
-python = "^3.10"
+python = "^3.12"
 pip = "~24.3" # The PyPA recommended tool for installing Python packages
 
 [tool.poetry.group.jupyter.dependencies] # Dependencies required for JupyterBook
 ipywidgets = "~8.1" # Jupyter interactive widgets
-jupyterlab = "~4.2" # JupyterLab computational environment
-jupyterlab-rise = "~0.42" # RISE: "Live" Reveal.js JupyterLab Slideshow extension
+jupyterlab = "~4.3" # JupyterLab computational environment
+jupyterlab-rise = "~0.43" # RISE: "Live" Reveal.js JupyterLab Slideshow extension
 jupytext = "~1.16" # Jupyter notebooks as Markdown documents, Julia, Python or R scripts
 lxml = "~5.3" # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
-notebook = "~7.2" # A web-based notebook environment for interactive computing
+notebook = "~7.3" # A web-based notebook environment for interactive computing
 sphinx-click = "~6.0" # Sphinx extension that automatically documents click applications
 sphinx-inline-tabs = "~2023.4" # Add inline tabbed content to your Sphinx documentation
 sphinx-proof = "~0.2" # A Sphinx extension for producing proofs, theorems, axioms, etc.
@@ -61,7 +61,7 @@ watermark = "~2.5" # IPython magic function to print date/time stamps and variou
 [tool.poetry.group.dev.dependencies]
 ghp-import = "~2.1" # Copy your docs directly to the gh-pages branch
 jupyter-book = "~1.0" # Build a book with Jupyter Notebooks and Sphinx
-line-profiler = "~4.1.3" # Line-by-line profiler
+line-profiler = "~4.2" # Line-by-line profiler
 poetry-exec-plugin = "~0.3" # A plugin for poetry that allows you to execute scripts defined in your pyproject.toml
 poetry-plugin-export = "~1.8" # Poetry plugin to export the dependencies to various formats
 pyautogui = "~0.9" # Control the mouse and keyboard, and other GUI automation tasks
@@ -73,10 +73,10 @@ spyder-terminal = "~1.2" # A plugin that allows you to have integrated system te
 termtosvg = "~1.1" # Record terminal sessions as SVG animations
 
 [tool.poetry.group.test.dependencies]
-bandit = {extras = ["toml"], version = "~1.7"} # Security oriented static analyser for python code
+bandit = "~1.8" # Security oriented static analyser for python code
 black = "~24.10" # The uncompromising code formatter
 isort = "~5.13" # A Python utility / library to sort Python imports
-mypy = "~1.13" # Optional static typing for Python
+mypy = "~1.14" # Optional static typing for Python
 nbqa = "~1.9" # Run any standard Python code quality tool on a Jupyter Notebook
 pre-commit = "~4.0" # A framework for managing and maintaining multi-language pre-commit hooks
 pre-commit-hooks = "~5.0" # Some out-of-the-box hooks for pre-commit
