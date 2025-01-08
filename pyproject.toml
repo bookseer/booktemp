@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.01.07"
+version = "2025.01.08"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -107,27 +107,28 @@ pyupgrade = "~3.19" # A tool to automatically upgrade syntax for newer versions
 
 init_venv = """
 echo 'Init poetry virtual environment'
-poetry config warnings.export false
 poetry install --no-root
 pre-commit install
 """
 
-delete_venv = """
-echo 'Delete poetry virtual environment'
+clean_venv = """
+echo 'Clean poetry virtual environment'
 poetry env remove --all
 rm -rf ./poetry.lock
-deactivate
-exit
 """
 
-update_venv = """
+update_requirements = """
 echo 'Update poetry virtual environment'
-poetry lock
-poetry update --version
 poetry update
-poetry export --format requirements.txt --output ./requirements.txt --without-hashes
-poetry export --format requirements.txt --output ./requirements_colab.txt --without-hashes --without dev --without test
-poetry export --format requirements.txt --output ./.binder/requirements.txt --without-hashes --without dev --without=test
+poetry lock --no-update
+poetry export --format requirements.txt --output ./requirements.txt --without-hashes \
+    --with jupyter \
+    --with dev \
+    --with test
+poetry export --format requirements.txt --output ./requirements_colab.txt --without-hashes \
+    --with jupyter
+poetry export --format requirements.txt --output ./.binder/requirements.txt --without-hashes \
+    --with jupyter
 pre-commit autoupdate --freeze
 poetry show --top-level --outdated
 """
@@ -138,14 +139,14 @@ pre-commit run --all-files
 """
 
 jupyter = """
-Start Jupyter Lab without token'
+echo 'Start Jupyter Lab without token'
 export JUPYTERLAB_SETTINGS_DIR=./.jupyterlab_config/user-settings
 export JUPYTERLAB_WORKSPACES_DIR=./.jupyterlab_config/workspaces
 python -m jupyter lab --allow-root --NotebookApp.token='' --NotebookApp.password=''
 """
 
 spyder = """
-Start Spyder
+echo 'Start Spyder'
 spyder --workdir=./ --window-title bookseer-booktemp --project ./ --conf-dir ./.spyder_config
 """
 
