@@ -50,6 +50,6 @@
 Copyright (c) 2023–2025, Александр Красников.
 
 [**CC BY-NC 4.0**](./LICENSE.txt)
-<img src="./book/_static/img/cc-icons.svg#cc-logo" style="width:12px">
-<img src="./book/_static/img/cc-icons.svg#cc-by" style="width:12px">
-<img src="./book/_static/img/cc-icons.svg#cc-nc" style="width:12px">
+<img src="./book/_static/images/cc-icons.svg#cc-logo" style="width:12px">
+<img src="./book/_static/images/cc-icons.svg#cc-by" style="width:12px">
+<img src="./book/_static/images/cc-icons.svg#cc-nc" style="width:12px">
