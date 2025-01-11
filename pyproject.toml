@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.01.10"
+version = "2025.01.11"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -148,6 +148,11 @@ python -m jupyter lab --allow-root --NotebookApp.token='' --NotebookApp.password
 spyder = """
 echo 'Start Spyder'
 spyder --workdir=./ --window-title bookseer-booktemp --project ./ --conf-dir ./.spyder_config
+"""
+
+debug_book = """
+echo 'Build book'
+jupyter-book build --all --warningiserror --nitpick --verbose --keep-going ./book/
 """
 
 build_book = """
