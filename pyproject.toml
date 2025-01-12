@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.01.11"
+version = "2025.01.12"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -168,7 +168,7 @@ ghp-import ./book/_build/html --no-jekyll --push --force --cname=booktemp.bookse
 
 clean_book = """
 echo 'Clean book'
-rm -rf book/_build
+jupyter-book clean --all ./book/
 """
 
 
