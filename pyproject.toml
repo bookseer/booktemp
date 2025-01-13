@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.01.12"
+version = "2025.01.13"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -158,6 +158,7 @@ jupyter-book build --all --warningiserror --nitpick --verbose --keep-going ./boo
 build_book = """
 echo 'Build book'
 jupyter-book build --all --builder html ./book/
+jupyter-book build --all --builder pdflatex ./book/
 """
 
 publish_book = """
