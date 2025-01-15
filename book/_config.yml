@@ -168,8 +168,9 @@ html:
   # Whether to include your home page in the left Navigation Bar
   home_page_in_navbar: false
 
-  # A GA id that can be used to track book views.
-  google_analytics_id: ""
+  analytics:
+    # A GA id that can be used to track book views.
+    google_analytics_id: ""
 
 
 #======================================================================================================================
