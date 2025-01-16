@@ -18,7 +18,7 @@ only_build_toc_files: false
 
 #======================================================================================================================
 # Information about where the book exists on the web
-# See https://jupyterbook.org/en/stable/interactive/launchbuttons.html#common-launch-button-configuration
+# https://jupyterbook.org/en/stable/interactive/launchbuttons.html#common-launch-button-configuration
 #======================================================================================================================
 repository:
 
@@ -34,7 +34,7 @@ repository:
 
 #======================================================================================================================
 # Launch button settings
-# See https://jupyterbook.org/en/stable/interactive/launchbuttons.html
+# https://jupyterbook.org/en/stable/interactive/launchbuttons.html
 #======================================================================================================================
 launch_buttons:
 
@@ -62,7 +62,7 @@ launch_buttons:
 
 #======================================================================================================================
 # Execute and cache settings
-# See https://jupyterbook.org/content/execute.html
+# https://jupyterbook.org/en/stable/content/execute.html
 #======================================================================================================================
 execute:
 
@@ -91,7 +91,7 @@ execute:
 
 #======================================================================================================================
 # Optional MyST Syntaxes
-# See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+# https://myst-parser.readthedocs.io/en/latest/syntax/optional.html
 #======================================================================================================================
 parse:
 
@@ -109,7 +109,7 @@ parse:
     - substitution
     - tasklist
 
-  # https://myst-parser.readthedocs.io/en/v0.13.4/using/syntax-optional.html#substitutions-with-jinja2
+  # Substitutions (with Jinja2)
   myst_substitutions:
     licence: CC BY-NC 4.0
 
@@ -122,7 +122,7 @@ parse:
 
 #======================================================================================================================
 # HTML-specific settings
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+# https://jupyterbook.org/en/stable/customize/config.html
 #======================================================================================================================
 html:
 
@@ -175,7 +175,7 @@ html:
 
 #======================================================================================================================
 # Comments settings
-# See https://jupyterbook.org/en/stable/interactive/comments.html?highlight=Comments#
+# https://jupyterbook.org/en/stable/interactive/comments.html
 #======================================================================================================================
   comments:
     hypothesis: false
@@ -186,7 +186,7 @@ html:
 #======================================================================================================================
 # LaTeX-specific settings
 # Define the name of the latex output file for PDF builds
-# See https://jupyterbook.org/en/stable/advanced/pdf.html
+# https://jupyterbook.org/en/stable/advanced/pdf.html
 #======================================================================================================================
 latex:
 
@@ -203,7 +203,7 @@ latex:
 
 #======================================================================================================================
 # BibLaTex-specific settings
-# See https://jupyterbook.org/en/stable/tutorials/references.html?highlight=bibtex#
+# https://jupyterbook.org/en/stable/tutorials/references.html
 #======================================================================================================================
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
