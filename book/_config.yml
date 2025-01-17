@@ -1,50 +1,53 @@
-#======================================================================================================================
+#=============================================================================
 # Book settings
-#======================================================================================================================
+#=============================================================================
 title: bookname
 author: Красников Александр
 copyright: 2023–2025
 logo: _static/images/logo-wide.svg
 email: writer@bookseer.org
-description: >- # this means to ignore newlines until "baseurl:"
+description: > # The > triggers a block string containing the description.
   bookname
 
-# Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+# Patterns to skip when building the book.
+# Can be glob-style (e.g. "*skip.ipynb").
 exclude_patterns: ["**.ipynb_checkpoints"]
 
-# Auto-exclude files not in the toc
+# Auto-exclude files not in the table of contents.
 only_build_toc_files: false
 
 
-#======================================================================================================================
+#=============================================================================
 # Information about where the book exists on the web
-# https://jupyterbook.org/en/stable/interactive/launchbuttons.html#common-launch-button-configuration
-#======================================================================================================================
+# https://jupyterbook.org/en/stable/interactive/launchbuttons.html
+#=============================================================================
 repository:
 
-  # Online location of your book
+  # Online location of your book.
   url: https://github.com/bookseer/booktemp
 
-  # Optional path to your book, relative to the repository root
+  # Optional path to your book, relative to the repository root.
   path_to_book: book
 
-  # Which branch of the repository should be used when creating links (optional)
+  # Which branch of the repository should be used when creating links.
   branch: main
 
 
-#======================================================================================================================
+#=============================================================================
 # Launch button settings
 # https://jupyterbook.org/en/stable/interactive/launchbuttons.html
-#======================================================================================================================
+#=============================================================================
 launch_buttons:
 
-  # Add a thebe button to pages (requires the repository to run on Binder)
+  # Add a Thebe button to pages.
+  # Requires the repository to run on Binder.
   thebe: true
 
-  # The interface interactive links will activate ["classic", "jupyterlab"]
+  # The interface interactive links will activate.
+  # Must be one of ("classic", "jupyterlab").
   notebook_interface: "jupyterlab"
 
-  # The URL of the BinderHub (e.g., https://mybinder.org)
+  # The URL of the BinderHub (e.g., https://mybinder.org).
   binderhub_url: "https://mybinder.org"
 
   # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
@@ -60,39 +63,49 @@ launch_buttons:
   colab_url: "https://colab.research.google.com"
 
 
-#======================================================================================================================
+#=============================================================================
 # Execute and cache settings
 # https://jupyterbook.org/en/stable/content/execute.html
-#======================================================================================================================
+#=============================================================================
 execute:
 
-  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  # Whether to execute notebooks at build time.
+  # Must be one of ("auto", "force", "cache", "off")
   execute_notebooks: auto
 
-  # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
+  # A path to the jupyter cache that will be used to store execution artifacts.
+  # Defaults to `_build/.jupyter_cache/`
   cache: "_build/.jupyter_cache/"
 
-  # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
-  # exclude_patterns: []
+  # A list of patterns to *skip* in execution.
+  # Сan be used if, for example, a notebook that takes a really long time.
+  exclude_patterns: []
 
   # The maximum time (in seconds) each notebook cell is allowed to run.
   timeout: 120
 
-  # If `true`, then a temporary directory will be created and used as the command working directory (cwd),
+  # The command working directory (cwd).
+  # If `true`, then a temporary directory will be created and used as cwd,
   # otherwise the notebook's parent directory will be the cwd.
   run_in_temp: false
 
-  # If `false`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+  # If `true` all cells are always run,
+  # otherwise, when a code cell raises an error the execution is stopped.
   allow_errors: false
 
-  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
+  # Dealing with code that produces stderr.
+  # Must be one of:
+  #  "show" (default): show all stderr (unless a remove-stderr tag is present);
+  #  "remove": remove all stderr;
+  #  "remove-warn": remove all stderr, but log a warning if any found;
+  #  "warn", "error" or "severe": log the stderr at a certain level.
   stderr_output: "show"
 
 
-#======================================================================================================================
+#=============================================================================
 # Optional MyST Syntaxes
 # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html
-#======================================================================================================================
+#=============================================================================
 parse:
 
   # Default extensions to enable in the myst parser.
@@ -109,27 +122,27 @@ parse:
     - substitution
     - tasklist
 
-  # Substitutions (with Jinja2)
+  # Substitutions (with Jinja2).
   myst_substitutions:
     licence: CC BY-NC 4.0
 
-  # URI schemes that will be recognised as external URLs in Markdown links
+  # URI schemes that will be recognised as external URLs in Markdown links.
   myst_url_schemes: ["mailto", "http", "https"]
 
-  # Allow display math ($$) within an inline context
+  # Allow display math ($$) within an inline context.
   myst_dmath_double_inline: true
 
 
-#======================================================================================================================
+#=============================================================================
 # HTML-specific settings
 # https://jupyterbook.org/en/stable/customize/config.html
-#======================================================================================================================
+#=============================================================================
 html:
 
   # A banner announcement at the top of the site.
   announcement: "Сайт находится в разработке"
 
-  # Adding extra HTML to the footer
+  # Adding extra HTML to the footer.
   extra_footer: |
     Copyright &copy; 2023–2025,
     <a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode.en"
@@ -139,8 +152,8 @@ html:
     <img src="../_static/images/cc-icons.svg#cc-by" style="width:12px">
     <img src="../_static/images/cc-icons.svg#cc-nc" style="width:12px">
 
-  # Add extra HTML to the left navbar
-  extra_navbar: <div>YOUR HTML</div>
+  # Add extra HTML to the left navbar.
+  extra_navbar: <div></div>
 
   html_extra_path:
     - _static/images/
@@ -149,23 +162,22 @@ html:
   # Used for creating image previews and social links.
   baseurl: "https://booktemp.bookseer.org/"
 
-  # A path to a favicon image
+  # A path to a favicon image.
   favicon: "_static/images/favicon.ico"
 
-  # Whether to add an "edit this page" button to pages.
-  # If `true`, repository information in `repository`must be filled in
+  # Whether to add an "Suggest edit" button to pages.
   use_edit_page_button: true
 
-  # Whether to add a link to your repository button
+  # Whether to add a link to your repository button to pages.
   use_repository_button: true
 
-  # Whether to add an "open an issue" button
+  # Whether to add an "Open an issue" button to pages.
   use_issues_button: true
 
-  # Continuous numbering across parts/chapters
+  # Continuous numbering across parts/chapters.
   use_multitoc_numbering: true
 
-  # Whether to include your home page in the left Navigation Bar
+  # Whether to include your home page in the left Navigation Bar.
   home_page_in_navbar: false
 
   analytics:
@@ -173,76 +185,83 @@ html:
     google_analytics_id: ""
 
 
-#======================================================================================================================
+#=============================================================================
 # Comments settings
 # https://jupyterbook.org/en/stable/interactive/comments.html
-#======================================================================================================================
+#=============================================================================
   comments:
     hypothesis: false
     utterances: false
 
 
-
-#======================================================================================================================
+#=============================================================================
 # LaTeX-specific settings
-# Define the name of the latex output file for PDF builds
 # https://jupyterbook.org/en/stable/advanced/pdf.html
-#======================================================================================================================
+#=============================================================================
 latex:
 
-  # latex_engine  one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
+  # Latex engine.
+  # Must be one of ("pdflatex", "xelatex", "luatex", "platex", "uplatex").
+  # "xelatex" recommended for unicode.
   latex_engine: xelatex
 
-  # Use sphinx-jupyterbook-latex for pdf builds as default
+  # Use sphinx-jupyterbook-latex for pdf builds as default.
   use_jupyterbook_latex: true
 
   latex_documents:
-    # Define the name of the latex output file for PDF builds
+    # Define the name of the latex output file for PDF builds.
     targetname: book.tex
 
 
-#======================================================================================================================
+#=============================================================================
 # BibLaTex-specific settings
 # https://jupyterbook.org/en/stable/tutorials/references.html
-#======================================================================================================================
-# Add a bibtex file so that we can create citations
+#=============================================================================
+# Add a bibtex file so that we can create citations.
 bibtex_bibfiles:
   - references.bib
 
 
-#======================================================================================================================
+#=============================================================================
 # Sphinx Advanced and power-user settings
-#======================================================================================================================
+# https://jupyterbook.org/en/stable/advanced/sphinx.html
+#=============================================================================
 sphinx:
 
-  # A list of extra extensions to load by Sphinx (added to those already used by JB).
+  # A list of extra extensions to load by Sphinx.
+  # Added to those already used by JB.
   extra_extensions:
     - sphinx_inline_tabs
     - sphinx_proof
     - sphinx_togglebutton
     #- sphinxext.rediraffe
 
-  # A list of local extensions to load by sphinx specified by "name: path" items
+  # A list of local extensions to load by sphinx.
+  # Specified by "name: path" items.
   local_extensions:
 
-  # A boolean indicating whether to overwrite the Sphinx config (true) or recursively update (false)
+  # Whether to overwrite the Sphinx config (true)
+  # or recursively update (false).
   recursive_update: false
 
-  config:  # key-value pairs to directly over-ride the Sphinx configuration
+  # key-value pairs to directly over-ride the Sphinx configuration.
+  config:
 
-    # html
-    #
+    # HTML
+    # https://jupyterbook.org/en/stable/advanced/html.html
     language: "ru"
     html_show_copyright: false
 
-    # Latex
-    # https://jupyterbook.org/en/stable/advanced/pdf.html?highlight=latex_engine#book-style-pdf
-    bibtex_reference_style: author_year  # or label, super, \supercite
-    latex_toplevel_sectioning: "part"
+    # LaTeX
+    # https://jupyterbook.org/en/stable/advanced/pdf.html
 
-    # Package provides LaTeX support for the included “Font Awesome 5 Free” icon set
-    # https://ctan.org/pkg/fontawesome5
-    # sd_fontawesome_latex: True # FIXME: does not work
+    # The reference style.
+    # Must be one of ("label", "auto", "author_year")
+    bibtex_reference_style: label
+
+    # LaTeX toplevel sectioning.
+    # Must be one of ("part", "chapter")
+    latex_toplevel_sectioning: "part"
 
     # suppress_warnings: ["mystnb.unknown_mime_type", "myst.domains", "mystnb.mime_priority"]
 
@@ -252,7 +271,7 @@ sphinx:
     nb_execution_timeout: 120
 
 
-    # Custom notebook formats and Jupytext
+    # Custom notebook formats and jupytext.
     # https://jupyterbook.org/en/stable/file-types/jupytext.html
     nb_custom_formats:
       .Rmd:
@@ -278,7 +297,6 @@ sphinx:
           "bmat": ["\\left[\\begin{array}"]
           "emat": ["\\end{array}\\right]"]
 
-    # sphinxext.rediraffe
     # Sphinx Extension to redirect files
     # https://github.com/wpilibsuite/sphinxext-rediraffe
     #rediraffe_branch: 'main'
