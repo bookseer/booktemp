@@ -489,3 +489,6 @@ book/_build/
 # Custom editors settings
 .jupyterlab_config/
 .spyder_config/
+
+# Kate editor
+.virtual_documents/
