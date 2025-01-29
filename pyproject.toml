@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.01.28"
+version = "2025.01.29"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -152,12 +152,18 @@ spyder --workdir=./ --window-title bookseer-booktemp --project ./ --conf-dir ./.
 """
 
 debug_book = """
-echo 'Build book'
+echo 'Debug book'
+jupyter-book clean --all ./book/
+shopt -s globstar
+rm **/*.ipynb
 jupyter-book build --all --warningiserror --nitpick --verbose --keep-going ./book/
 """
 
 build_book = """
 echo 'Build book'
+jupyter-book clean --all ./book/
+shopt -s globstar
+rm **/*.ipynb
 jupyter-book build --all --builder html ./book/
 jupyter-book build --all --builder pdflatex ./book/
 """
