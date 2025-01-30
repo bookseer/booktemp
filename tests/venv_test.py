@@ -1,6 +1,4 @@
-"""Testing the virtual environment
-
-"""
+"""Testing the virtual environment"""
 
 import platform
 

@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.01.30"
+version = "2025.01.31"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -42,7 +42,7 @@ classifiers = [ # https://pypi.org/classifiers/
 #======================================================================================================================
 [tool.poetry.dependencies] # Dependencies required for this books
 python = "^3.12"
-pip = "~24.3" # The PyPA recommended tool for installing Python packages
+pip = "~25.0" # The PyPA recommended tool for installing Python packages
 
 [tool.poetry.group.jupyter.dependencies] # Dependencies required for JupyterBook
 ipywidgets = "~8.1" # Jupyter interactive widgets
@@ -75,11 +75,11 @@ termtosvg = "~1.1" # Record terminal sessions as SVG animations
 
 [tool.poetry.group.test.dependencies]
 bandit = "~1.8" # Security oriented static analyser for python code
-black = "~24.10" # The uncompromising code formatter
-isort = "~5.13" # A Python utility / library to sort Python imports
+black = "~25.1" # The uncompromising code formatter
+isort = "~6.0" # A Python utility / library to sort Python imports
 mypy = "~1.14" # Optional static typing for Python
 nbqa = "~1.9" # Run any standard Python code quality tool on a Jupyter Notebook
-pre-commit = "~4.0" # A framework for managing and maintaining multi-language pre-commit hooks
+pre-commit = "~4.1" # A framework for managing and maintaining multi-language pre-commit hooks
 pre-commit-hooks = "~5.0" # Some out-of-the-box hooks for pre-commit
 pylint = "~3.3" # Python code static checker
 pytest = "~8.3" # Simple powerful testing with Python
