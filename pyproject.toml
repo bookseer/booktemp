@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.02.04"
+version = "2025.02.05"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -63,8 +63,8 @@ watermark = "~2.5" # IPython magic function to print date/time stamps and variou
 ghp-import = "~2.1" # Copy your docs directly to the gh-pages branch
 jupyter-book = "~1.0" # Build a book with Jupyter Notebooks and Sphinx
 line-profiler = "~4.2" # Line-by-line profiler
-poetry-exec-plugin = "~0.3" # A plugin for poetry that allows you to execute scripts defined in your pyproject.toml
-poetry-plugin-export = "~1.8" # Poetry plugin to export the dependencies to various formats
+poetry-exec-plugin = {git = "https://github.com/askras/poetry-exec-plugin.git"} # A plugin for poetry that allows you to execute scripts defined in your pyproject.toml
+poetry-plugin-export = "~1.9" # Poetry plugin to export the dependencies to various formats
 pyautogui = "~0.9" # Control the mouse and keyboard, and other GUI automation tasks
 pyppeteer = "~2.0" # Headless chrome/chromium automation library (unofficial port of puppeteer)
 spyder = "~6.0" # The Python IDE that scientists and data analysts deserve
@@ -121,7 +121,7 @@ rm -rf ./poetry.lock
 update_requirements = """
 echo 'Update poetry virtual environment'
 poetry update
-poetry lock --no-update
+poetry lock --regenerate
 poetry export --format requirements.txt --output ./requirements.txt --without-hashes \
     --with jupyter \
     --with dev \
