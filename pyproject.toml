@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.02.05"
+version = "2025.02.07"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -77,7 +77,7 @@ termtosvg = "~1.1" # Record terminal sessions as SVG animations
 bandit = "~1.8" # Security oriented static analyser for python code
 black = "~25.1" # The uncompromising code formatter
 isort = "~6.0" # A Python utility / library to sort Python imports
-mypy = "~1.14" # Optional static typing for Python
+mypy = "~1.15" # Optional static typing for Python
 nbqa = "~1.9" # Run any standard Python code quality tool on a Jupyter Notebook
 pre-commit = "~4.1" # A framework for managing and maintaining multi-language pre-commit hooks
 pre-commit-hooks = "~5.0" # Some out-of-the-box hooks for pre-commit
