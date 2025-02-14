@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "bookseer-booktemp"
-version = "2025.02.07"
+version = "2025.02.14"
 description = "bookname"
 authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
 maintainers = ["askras <askrasnikov@gmail.com>"]
@@ -49,6 +49,7 @@ ipywidgets = "~8.1" # Jupyter interactive widgets
 jupyterlab = "~4.3" # JupyterLab computational environment
 jupyterlab-myst = "~2.4" # Use MyST in JupyterLab
 jupyterlab-rise = "~0.43" # RISE: "Live" Reveal.js JupyterLab Slideshow extension
+jupyterquiz = "^2.8.1" # Interactive quizzes for Jupyter and Jupyter Book
 jupytext = "~1.16" # Jupyter notebooks as Markdown documents, Julia, Python or R scripts
 lxml = "~5.3" # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
 notebook = "~7.3" # A web-based notebook environment for interactive computing
