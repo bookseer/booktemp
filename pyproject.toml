@@ -3,20 +3,21 @@
 # https://python-poetry.org/
 #======================================================================================================================
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]
+[project]
 name = "bookseer-booktemp"
-version = "2025.02.15"
+version = "2025.02.18"
 description = "bookname"
-authors = ["Alexander Krasnikov <askrasnikov@gmail.com>"]
-maintainers = ["askras <askrasnikov@gmail.com>"]
-license = "CC BY 4.0"
+authors = [
+    {name = "Alexander Krasnikov aka askras", email = "askrasnikov@gmail.com"},
+]
+maintainers = [
+    {name = "Alexander Krasnikov aka askras", email = "askrasnikov@gmail.com"},
+]
+license = {text = "CC BY 4.0"}
 readme = "README.md"
-homepage = "https://booktemp.bookseer.org"
-repository = "http://github.com/bookseer/booktemp"
-documentation = "https://booktemp.bookseer.org/docs.html"
 keywords = ["keywords"]
 packages = [{include = "bookseer", from = "src"}]
 exclude = ["book/*"]
@@ -32,17 +33,15 @@ classifiers = [ # https://pypi.org/classifiers/
     "Topic :: Education"
 ]
 
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/bookseer/booktemp/issues"
-
 
 #======================================================================================================================
 # Project's dependencies
 # https://pypi.org/
 #======================================================================================================================
-[tool.poetry.dependencies] # Dependencies required for this books
-python = "^3.12"
-pip = "~25.0" # The PyPA recommended tool for installing Python packages
+requires-python = ">=3.12,<4.0"
+dependencies = [ # Dependencies required for this books
+    "tqdm (>=4.67.1,<5.0.0)" # Fast, Extensible Progress Meter
+]
 
 [tool.poetry.group.jupyter.dependencies] # Dependencies required for JupyterBook
 ipywidgets = "~8.1" # Jupyter interactive widgets
@@ -55,6 +54,7 @@ jupytext = "~1.16" # Jupyter notebooks as Markdown documents, Julia, Python or R
 lxml = "~5.3" # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API
 notebook = "~7.3" # A web-based notebook environment for interactive computing
 sphinx-click = "~6.0" # Sphinx extension that automatically documents click applications
+sphinxcontrib-asciinema = "~0.4" # Embed asciinema casts in your Sphinx docs
 sphinx-inline-tabs = "~2023.4" # Add inline tabbed content to your Sphinx documentation
 sphinx-proof = "~0.2" # A Sphinx extension for producing proofs, theorems, axioms, etc.
 sphinx-togglebutton = "~0.3" # Toggle page content and collapse admonitions in Sphinx
@@ -62,9 +62,13 @@ sphinxext-rediraffe = "~0.2" # Sphinx Extension that redirects non-existent page
 watermark = "~2.5" # IPython magic function to print date/time stamps and various system information
 
 [tool.poetry.group.dev.dependencies]
+asciinema = "~2.4" # Terminal session recorder
+asciinema-automation = "~0.2" # CLI utility to automate asciinema
+asciinema-scene = "~0.9" # Toolbox to edit asciinema screencasts (sciine)
 ghp-import = "~2.1" # Copy your docs directly to the gh-pages branch
 jupyter-book = "~1.0" # Build a book with Jupyter Notebooks and Sphinx
 line-profiler = "~4.2" # Line-by-line profiler
+pip = "~25.0" # The PyPA recommended tool for installing Python packages
 poetry-exec-plugin = {git = "https://github.com/askras/poetry-exec-plugin.git"} # A plugin for poetry that allows you to execute scripts defined in your pyproject.toml
 poetry-plugin-export = "~1.9" # Poetry plugin to export the dependencies to various formats
 pyautogui = "~0.9" # Control the mouse and keyboard, and other GUI automation tasks
@@ -89,10 +93,21 @@ pyupgrade = "~3.19" # A tool to automatically upgrade syntax for newer versions
 
 
 #======================================================================================================================
-# Optional dependencies, which enhance a package, but are not required and clusters of optional dependencies
-# https://python-poetry.org/docs/pyproject#extras
+# The URLs of the project
+# https://python-poetry.org/docs/pyproject#urls
 #======================================================================================================================
-[tool.poetry.extras]
+[project.urls]
+homepage = "https://booktemp.bookseer.org"
+repository = "http://github.com/bookseer/booktemp"
+documentation = "https://booktemp.bookseer.org/docs.html"
+"Bug Tracker" = "https://github.com/bookseer/booktemp/issues"
+
+
+#======================================================================================================================
+# Optional dependencies, which enhance a package, but are not required and clusters of optional dependencies
+# https://python-poetry.org/docs/pyproject#optional-dependencies
+#======================================================================================================================
+[project.optional-dependencies]
 
 
 #======================================================================================================================
