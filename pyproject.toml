@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "bookseer-booktemp"
-version = "2025.02.19"
+version = "2025.02.21"
 description = "bookname"
 authors = [
     {name = "Alexander Krasnikov aka askras", email = "askrasnikov@gmail.com"},
@@ -160,7 +160,7 @@ jupyter = """
 echo 'Start Jupyter Lab without token'
 export JUPYTERLAB_SETTINGS_DIR=./.jupyterlab_config/user-settings
 export JUPYTERLAB_WORKSPACES_DIR=./.jupyterlab_config/workspaces
-python -m jupyter lab --allow-root --NotebookApp.token='' --NotebookApp.password=''
+python -m jupyter lab --allow-root --NotebookApp.token='' --NotebookApp.password='' --no-browser
 """
 
 spyder = """
