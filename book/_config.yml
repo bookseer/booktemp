@@ -210,7 +210,7 @@ latex:
 
   latex_documents:
     # Define the name of the latex output file for PDF builds.
-    targetname: book.tex
+    targetname: booktemp.tex
 
 
 #=============================================================================
