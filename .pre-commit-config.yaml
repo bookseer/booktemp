@@ -1,5 +1,5 @@
 default_language_version:
-  python: python3.12
+  python: python3.10
 
 minimum_pre_commit_version: 3.5.0
 
@@ -250,7 +250,7 @@ repos:
     description: "https://github.com/asottile/pyupgrade"
     language: system
     entry: python -m pyupgrade
-    args: [--py312-plus]
+    args: [--py310-plus]
     types_or: [pyi, python]
     require_serial: true
 
@@ -260,7 +260,7 @@ repos:
                   https://github.com/nbQA-dev/nbQA"
     language: system
     entry: python -m nbqa pyupgrade
-    args: [--py312-plus]
+    args: [--py310-plus]
     types_or: [jupyter, markdown]
     require_serial: true
 
