@@ -14,7 +14,7 @@ description: > # The > triggers a block string containing the description.
 exclude_patterns: ["**.ipynb_checkpoints"]
 
 # Auto-exclude files not in the table of contents.
-only_build_toc_files: false
+only_build_toc_files: true
 
 
 #=============================================================================
